@@ -1,0 +1,2 @@
+module KijisHelper
+end
