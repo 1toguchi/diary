@@ -1,9 +1,19 @@
-<div class="menubar">
-   <% if member_signed_in? %>
-&nbsp;|&nbsp;<%= link_to "ログアウト", destroy_member_session_path, method: :delete %>
-&nbsp;|&nbsp;<%= link_to "記録", :new_kiji %>
-   <% else %>
-&nbsp;|&nbsp; <%= link_to "新規登録",  :new_member_registration %>
-&nbsp;|&nbsp; <%= link_to "ログイン", :new_member_session %>
-  <% end %>
-</div>
+<% if @kijis.present? %>
+<tr>
+  <th>タイトル</th>
+  <th>日記</th>
+  <th>日付</th>
+</tr>
+
+
+ <% @kijis.each do |kiji| %>
+ <tr>
+  <td><%= link_to kiji.title, kiji %></td><br>
+  <td><%= kiji.body %></td>
+  <td><%= kiji.released_at.strftime("%Y/%m/%d %H:%M") %></td>
+ </tr>
+ <% end %>
+
+<% else %>
+  <p>情報がありません</p>
+<% end %>

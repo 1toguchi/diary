@@ -1,0 +1,16 @@
+<% if member_signed_in? %>
+  <p><%= link_to "削除", @kijis, method: :delete %></p>
+   <p><%= link_to "編集", [:edit, @kijis] %></p>
+<% end %>
+  
+
+<tr>
+ <th>タイトル</th>
+ <td><%= @kijis.title %></td>
+</tr>
+
+<tr><br>
+ <th>記憶</th>
+ <td><%= @kijis.body %></td>
+</tr>
+ 

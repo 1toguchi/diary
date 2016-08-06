@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160805175409) do
+ActiveRecord::Schema.define(version: 20160806075216) do
+
+  create_table "kijis", force: :cascade do |t|
+    t.integer  "member_id",   limit: 4,     null: false
+    t.string   "title",       limit: 255,   null: false
+    t.text     "body",        limit: 65535, null: false
+    t.datetime "released_at"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "kijis", ["member_id"], name: "index_kijis_on_member_id", using: :btree
 
   create_table "members", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -26,7 +37,7 @@ ActiveRecord::Schema.define(version: 20160805175409) do
     t.string   "last_sign_in_ip",        limit: 255
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
-    t.string   "name",                   limit: 255
+    t.string   "name",                   limit: 255,              null: false
     t.integer  "gender",                 limit: 4
     t.date     "birthday"
   end

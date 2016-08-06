@@ -1,0 +1,14 @@
+
+
+<tr>
+ <th>名前</th>
+ <td><%= @member.name %></td>
+</tr>
+<tr>
+<br>
+ <th>誕生日</th>
+ <td><%= @member.birthday.try(:strftime, "%Y年%m年%d日") %></td>
+</tr>
+<br>
+<tr>
+ 

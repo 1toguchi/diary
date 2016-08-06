@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
+  get 'members/show'
+
   devise_for :members
   root "kijis#index"
   resources :kijis
+  resources :members,  only: [:show]
+  resources :members do 
+    resources :kijis
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
