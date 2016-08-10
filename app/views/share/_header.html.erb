@@ -1,8 +1,10 @@
 <div class="menubar">
    <% if member_signed_in? %>
-&nbsp;|&nbsp;<%= link_to current_member.name + "さん",  :root %>
+&nbsp;|&nbsp;<%=  image_tag current_member.image.url, width: 50, height: 50%>
+&nbsp;|&nbsp;<%= link_to current_member.name + "さん", current_member %>
 &nbsp;|&nbsp;<%= link_to "ログアウト", destroy_member_session_path, method: :delete %>
 &nbsp;|&nbsp;<%= link_to "記録", :new_kiji %>
+&nbsp;|&nbsp;<%= link_to "記録一覧", :kijis %>
    <% else %>
 &nbsp;|&nbsp; <%= link_to "新規登録",  :new_member_registration %>
 &nbsp;|&nbsp; <%= link_to "ログイン", :new_member_session %>

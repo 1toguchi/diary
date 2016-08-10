@@ -5,6 +5,7 @@ class CreateKijis < ActiveRecord::Migration
       t.string :title, null: false
       t.text :body, null: false
       t.datetime :released_at
+      t.string :status, null: false, default: "draft"
 
       t.timestamps null: false
     end

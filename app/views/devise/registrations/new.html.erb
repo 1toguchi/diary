@@ -3,18 +3,41 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
+
    <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :image %><br />
+    <%= f.file_field :image %>
+  </div>
+
+   <div class="field">
+    <%= f.label :name , "名前"%><br />
     <%= f.text_field :name, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email ,"メール"%><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
 
+   <div class ="field">
+    <%= f.label :birthday, "誕生日",for: "member_birthday_1i" %>
+    <%= f.date_select :birthday,
+              start_year: 1940, end_year: Time.now.year,
+              use_month_numbers: true %>
+   </div>
+
+   <div class = "field">
+    <%= Member.human_attribute_name(:gender) %>
+      <%= f.radio_button :gender, 0 %>
+      <%= f.label :gender_0 , "男"%>
+      <%= f.radio_button :gender, 1 %>
+      <%= f.label :gender_1, "女" %>
+   </div>
+
+
+
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label :password ,"パスワード"%>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
@@ -22,7 +45,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation,"確認用パスワード" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 

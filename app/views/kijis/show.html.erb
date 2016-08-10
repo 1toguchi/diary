@@ -1,16 +1,23 @@
 <% if member_signed_in? %>
   <p><%= link_to "削除", @kijis, method: :delete %></p>
-   <p><%= link_to "編集", [:edit, @kijis] %></p>
+  <p><%= link_to "編集", [:edit, @kijis] %></p>
 <% end %>
-  
 
 <tr>
- <th>タイトル</th>
- <td><%= @kijis.title %></td>
+  <th>タイトル</th>
+  <td><%= @kijis.title %></td>
+</tr>
+ <br>
+<tr>
+  <th>記憶</th>
+  <td><%= @kijis.body %></td>
 </tr>
 
-<tr><br>
- <th>記憶</th>
- <td><%= @kijis.body %></td>
-</tr>
- 
+<p class = "vote">
+ <% @kijis.voters.order("votes.created_at").each do |voter| %>
+ ★<%= voter.name %>
+<% end %>
+  <% if current_member && current_member.votable_for?(@kijis) %>
+    <%= link_to "★いいね!", [:like, @kijis],method: :patch, class: "button" %>
+  <% end %>
+</p>

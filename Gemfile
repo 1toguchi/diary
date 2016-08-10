@@ -49,6 +49,9 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-stack_explorer'
   gem 'devise-i18n'
+  gem 'rails-i18n'
 gem 'devise-i18n-views'
+gem 'carrierwave'
+gem 'rmagick'
 end
 
