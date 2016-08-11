@@ -1,14 +1,13 @@
 <% if @kijis.present? %>
-<ul>
- <% @kijis.each do |kiji| %>
-  <li>
- <%= link_to kiji.title, kiji %>
- by <%= link_to kiji.author.name, [kiji.author, :kijis] %>
- - <%= link_to "削除", [:unlike, kiji], method: :patch,
- data: {confirm: "本当に削除しますか"} %>
-  </li>
-  <% end %>
-</ul>
-  <% else %>
+  <ul>
+    <% @kijis.each do |kiji| %>
+      <li>
+        <%= link_to kiji.title, kiji %>
+        by <%= link_to kiji.author.name, [kiji.author, :kijis] %>
+        - <%= link_to "削除", [:unlike, kiji], method: :patch, data: {confirm: "本当に削除しますか"} %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
   <p>記事がありません</p>
 <% end %>
