@@ -4,31 +4,31 @@ class KijisController < ApplicationController
     if params[:member_id]
       @member = Member.find(params[:member_id])
       @kijis = @member.kijis
-       else
+     else
       @kijis = Kiji.all
      end
      @kijis = @kijis.readable_for(current_member).order(released_at: :desc)
-   end
+  end
 
   def new
     @kiji = Kiji.new
   end
 
-   def create
+  def create
       @kiji = Kiji.new(kiji_params)
       @kiji.author = current_member
-    if @kiji.save
+     if @kiji.save
       redirect_to @kiji
-    else
+     else
       render "new"
-    end
+     end
   end
 
-   def edit
+  def edit
     @kiji = Kiji.find(params[:id])
   end
 
-   def update
+  def update
       @kiji = current_member.kijis.find(params[:id])
       @kiji.assign_attributes(kiji_params)
     if @kiji.save
@@ -44,21 +44,25 @@ class KijisController < ApplicationController
     redirect_to :root
   end
 
+  
   def show
     @kijis = Kiji.readable_for(current_member).find(params[:id])
   end
 
+  
   def like
     @kiji = Kiji.published.find(params[:id])
     current_member.voted_kijis << @kiji
     redirect_to @kiji
   end
 
+  
   def unlike
     current_member.voted_kijis.destroy(Kiji.find(params[:id]))
     redirect_to :voted_kijis
   end
 
+  
   def voted
     @kijis = current_member.voted_kijis.published
     .order("votes.created_at DESC")

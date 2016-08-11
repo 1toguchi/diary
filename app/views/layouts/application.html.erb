@@ -9,20 +9,21 @@
 </head>
 <body>
 <div class="container">
-<div class="header">
+  <div class="header">
 <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-<%= render "share/header" %> 
+<%= render "share/header" %>
   </div>
 
-<div class="content">
-<%= yield %>
-  </div>
-  <div class="footer">
+ <div class="content">
+  <%= yield %>
+ </div>
+
+ <div class="footer">
   <% render "share/footer" %>
-  </div>
-  </div>
+ </div>
+</div>
 
 
-</body>
+ </body>
 </html>

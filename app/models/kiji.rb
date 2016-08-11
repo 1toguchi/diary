@@ -6,7 +6,7 @@ class Kiji < ActiveRecord::Base
   STATUS_VALUES = %w(draft member_only public)
   validates :title, presence: true
   validates :body, presence: true
-  
+
 
 
   scope :common, -> { where(status: "public") }

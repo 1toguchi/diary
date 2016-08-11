@@ -3,9 +3,9 @@ class Member < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-         has_many :kijis, dependent: :destroy
-         has_many :votes, dependent: :destroy
-         has_many :voted_kijis, through: :votes, source: :kiji
+   has_many :kijis, dependent: :destroy
+   has_many :votes, dependent: :destroy
+   has_many :voted_kijis, through: :votes, source: :kiji
    validates :name, presence: true, length: { minimum: 1, maximum: 50 }
    validates :email, presence: true
    validates :gender, presence: true
