@@ -1,23 +1,25 @@
 <table class = "attr" >
- <tr>
-  <th><%= form.label :title, "タイトル" %></th><br>
-  <td><%= form.text_field :title %></td>
- </tr>
-
- <tr>
-   <th><%= form.label :body, "詳細" %></th><br>
-   <td><%= form.text_area :body, row: 30, cols: 40 %></td>
- </tr><br>
-
   <tr>
-   <th><%= form.label :released_at, "登録日" %></th>
-   <td><%= form.datetime_select :released_at,
-    start_year: 2000, end_year: Time.now.year + 1,
-    use_month_number: true %></td>
+    <th><%= form.label :title, "タイトル" %></th><br>
+    <td><%= form.text_field :title %></td>
   </tr>
 
   <tr>
-   <th><%= form.label :status %></th>
-   <td><%= form.select :status, Kiji.status_options %></td>
- </tr>
+    <th><%= form.label :body, "詳細" %></th><br>
+    <td><%= form.text_area :body, row: 30, cols: 40 %></td>
+  </tr><br>
+#↑<br>は不要かな？
+
+  <tr>
+    <th><%= form.label :released_at, "登録日" %></th>
+    <td>
+      <%= form.datetime_select :released_at, start_year: 2000,
+          end_year: Time.now.year + 1, use_month_number: true %>
+    </td>
+  </tr>
+
+  <tr>
+    <th><%= form.label :status %></th>
+    <td><%= form.select :status, Kiji.status_options %></td>
+  </tr>
 </table>
