@@ -3,6 +3,7 @@
   <p><%= link_to "編集", [:edit, @kijis] %></p>
 <% end %>
 
+#ここ<table>タグいるんじゃないかな？
 <tr>
   <th>タイトル</th>
   <td><%= @kijis.title %></td>
@@ -14,9 +15,9 @@
 </tr>
 
 <p class = "vote">
- <% @kijis.voters.order("votes.created_at").each do |voter| %>
- ★<%= voter.name %>
-<% end %>
+  <% @kijis.voters.order("votes.created_at").each do |voter| %>
+    ★<%= voter.name %>
+  <% end %>
   <% if current_member && current_member.votable_for?(@kijis) %>
     <%= link_to "★いいね!", [:like, @kijis],method: :patch, class: "button" %>
   <% end %>
