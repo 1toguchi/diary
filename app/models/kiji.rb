@@ -18,14 +18,12 @@ class Kiji < ActiveRecord::Base
 
   class << self
 
-     def status_text(status)
+    def status_text(status)
       I18n.t("activerecord.attributes.kiji.status_#{status}")
-     end
-
+    end
 
     def status_options
       STATUS_VALUES.map { |status| [status_text(status), status] }
     end
   end
-
 end

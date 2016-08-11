@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :kijis
   resources :members,  only: [:show]
   resources :members do 
-    resources :kijis
+  resources :kijis
   end
   resources :kijis do 
     member {patch "like", "unlike"}

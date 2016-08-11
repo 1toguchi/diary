@@ -4,24 +4,23 @@
 
 <% if @kijis.present? %>
 <table class = "attr" >
- <tr>
-  <th>タイトル</th>
-  <th>日記</th>
-  <th>日付</th>
- </tr>
+  <tr>
+   <th>タイトル</th>
+   <th>日記</th>
+   <th>日付</th>
+  </tr>
 
  <% @kijis.each do |kiji| %>
- <tr>
-  <td><%= link_to kiji.title, kiji %></td>
-  <td><%= kiji.body %></td>
-  <td><%= kiji.released_at.strftime("%Y/%m/%d %H:%M") %></td>
-  <td><% if (count = kiji.votes.count) > 0 %>|
-  <span class = "vote">★<%= count %></span><% end %></td>
- </tr>
+  <tr>
+    <td><%= link_to kiji.title, kiji %></td>
+    <td><%= kiji.body %></td>
+    <td><%= kiji.released_at.strftime("%Y/%m/%d %H:%M") %></td>
+    <td><% if (count = kiji.votes.count) > 0 %>|
+    <span class = "vote">★<%= count %></span><% end %></td>
+  </tr>
  </table>
  <p><%= render "footer", kiji: kiji %></p>
-
- <% end %>
+  <% end %>
 
 <% else %>
   <p>情報がありません</p>
