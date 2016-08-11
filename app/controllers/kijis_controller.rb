@@ -1,6 +1,10 @@
 class KijisController < ApplicationController
+  #名前には日本語はつけないほうがいい ここではArticlesControllerだと思う。
+
+  #before_actionのインデント   
    before_action :login_required, except: [:index, :show]
   def index
+     #ifのインデント
     if params[:member_id]
       @member = Member.find(params[:member_id])
       @kijis = @member.kijis
@@ -29,8 +33,10 @@ class KijisController < ApplicationController
   end
 
   def update
+     #current_memberってどこに定義されてる？
       @kiji = current_member.kijis.find(params[:id])
       @kiji.assign_attributes(kiji_params)
+     #ifのインデント   
     if @kiji.save
       redirect_to @kiji
     else
@@ -71,6 +77,9 @@ class KijisController < ApplicationController
 
 private
   def kiji_params
+  #permit内にmember_idが必要なのでは？これだとmember_idがnilになって、
+  #@kijis = @member.kijisとかに適切なレコードが格納されないようなきがする
+  #あとparamのインデント一つ深く
   params.require(:kiji).permit(:title, :body, :released_at, :status)
   end
 end
